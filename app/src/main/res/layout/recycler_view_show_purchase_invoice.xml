@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_margin="12dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,6 +30,7 @@
                 style="@style/AppTheme.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Pavan Varma"
                 android:textColor="@color/colorSecondaryText" />
 
