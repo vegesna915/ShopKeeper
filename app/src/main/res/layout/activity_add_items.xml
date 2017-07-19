@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.varma.shopkeeper.shopkeeper.AddItemActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarAddItemActivity"
+        style="@style/AppTheme.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        tools:ignore="UnusedAttribute" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_main_addItemActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <EditText
+                    android:id="@+id/itemName_addItemActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Item Name"
+                    android:inputType="textCapWords" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="62dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Brand" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/itemBrand_addItemActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
+                    android:gravity="end"
+                    android:hint="Brand Name"
+                    android:inputType="textCapSentences"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Size" />
+
+                <EditText
+                    android:id="@+id/itemSize_addItemActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.65"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:hint="Size"
+                    android:inputType="textCapCharacters" />
+
+
+            </LinearLayout>
+
+
+            <include layout="@layout/divider_layout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Actual Price" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <TextView
+                        android:id="@+id/xz3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignBottom="@+id/itemActualPrice_addItemActivity"
+                        android:layout_alignTop="@+id/itemActualPrice_addItemActivity"
+                        android:gravity="end|center_vertical"
+                        android:text="$"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/itemActualPrice_addItemActivity"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/xz3"
+                        android:gravity="end"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Profit" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <TextView
+                        android:id="@+id/xz1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignBottom="@+id/itemProfit_addItemActivity"
+                        android:layout_alignTop="@+id/itemProfit_addItemActivity"
+                        android:gravity="end|center_vertical"
+                        android:text="$"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/itemProfit_addItemActivity"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/xz1"
+                        android:gravity="end"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Tax" />
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <TextView
+                        android:id="@+id/xz2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignBottom="@+id/itemTax_addItemActivity"
+                        android:layout_alignTop="@+id/itemTax_addItemActivity"
+                        android:gravity="end|center_vertical"
+                        android:text="%"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/itemTax_addItemActivity"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/xz2"
+                        android:gravity="end"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Other" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <TextView
+                        android:id="@+id/xz4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignBottom="@+id/itemOtherTax_addItemActivity"
+                        android:layout_alignTop="@+id/itemOtherTax_addItemActivity"
+                        android:gravity="end|center_vertical"
+                        android:text="%"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/itemOtherTax_addItemActivity"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/xz4"
+                        android:gravity="end"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.25dp"
+                    android:layout_weight="0.35"
+                    android:background="@color/colorDivider" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="0.65" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:text="Sale Price" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65">
+
+                    <TextView
+                        android:id="@+id/xz6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignBottom="@+id/itemSalePrice_addItemActivity"
+                        android:layout_alignTop="@+id/itemSalePrice_addItemActivity"
+                        android:gravity="end|center_vertical"
+                        android:text="$"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/itemSalePrice_addItemActivity"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/xz6"
+                        android:enabled="false"
+                        android:gravity="end"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/saveItemButton_addItemActivity"
+                style="@style/AppTheme.BorderlessButton.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="60dp"
+                android:text="Save"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
+
+
+

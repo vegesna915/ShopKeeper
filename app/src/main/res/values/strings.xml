@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Shop Keeper</string>
+
+
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+</resources>

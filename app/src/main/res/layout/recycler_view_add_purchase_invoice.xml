@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/lr1"
+        android:gravity="start"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/itemName_recyclerView_addPurchaseInvoice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lee Jeans" />
+
+
+        <TextView
+            android:id="@+id/itemSize_recyclerView_addPurchaseInvoice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size 42"
+            android:textColor="@color/colorSecondaryText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/itemTotalPrice_recyclerView_addPurchaseInvoice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3600" />
+
+
+        <TextView
+            android:id="@+id/itemQty_recyclerView_addPurchaseInvoice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 x 1800"
+            android:textColor="@color/colorSecondaryText" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/itemName_recyclerView_manageItemActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/itemPrice_recyclerView_manageItemActivity"
+            android:text="Jeans"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/itemPrice_recyclerView_manageItemActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="$30"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/itemBrandName_recyclerView_manageItemActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Lee Cooper"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <include layout="@layout/divider_layout" />
+
+
+</LinearLayout>

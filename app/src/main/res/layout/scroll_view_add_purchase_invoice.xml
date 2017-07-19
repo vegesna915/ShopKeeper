@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_main_addPurchaseInvoiceActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/vendorName_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionThreshold="1"
+                android:hint="Vendor Name"
+                android:inputType="textCapWords"
+                android:textSize="16sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Phone" />
+
+            <EditText
+                android:id="@+id/vendorPhoneNumber_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="Phone number"
+                android:inputType="phone"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/vendorEmail_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Address" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/vendorAddress_addPurchaseInvoiceActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:hint="Address"
+                    android:inputType="textCapWords|textMultiLine"
+                    android:lines="5"
+                    android:minLines="1"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <include layout="@layout/divider_layout" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <EditText
+                android:id="@+id/invoiceNumber_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Invoice Number"
+                android:inputType="textCapCharacters"
+                android:textSize="16sp"
+                tools:ignore="TextFields" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/invoicePONumber_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PO Number"
+                android:inputType="textCapCharacters"
+                android:textSize="16sp"
+                tools:ignore="TextFields" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.3"
+                android:text="Date" />
+
+
+            <Button
+                android:id="@+id/invoiceDate_addPurchaseInvoiceActivity"
+                style="@style/AppTheme.ButtonBorderlessInList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:gravity="end|center_vertical"
+                android:padding="10dp"
+                android:text="August 24,2017"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/divider_layout" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Items"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_itemsList_addPurchaseInvoiceActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <include layout="@layout/divider_layout" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Sub Total" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignBottom="@+id/invoiceSubTotal_addPurchaseInvoiceActivity"
+                    android:layout_alignTop="@+id/invoiceSubTotal_addPurchaseInvoiceActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="$"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/invoiceSubTotal_addPurchaseInvoiceActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz6"
+                    android:enabled="false"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Tax" />
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignBottom="@+id/invoiceTax_addPurchaseInvoiceActivity"
+                    android:layout_alignTop="@+id/invoiceTax_addPurchaseInvoiceActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="%"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/invoiceTax_addPurchaseInvoiceActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz2"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Discount" />
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignBottom="@+id/invoiceDiscount_addPurchaseInvoiceActivity"
+                    android:layout_alignTop="@+id/invoiceDiscount_addPurchaseInvoiceActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="%"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/invoiceDiscount_addPurchaseInvoiceActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz1"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Total" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignBottom="@+id/invoiceTotalPrice_addPurchaseInvoiceActivity"
+                    android:layout_alignTop="@+id/invoiceTotalPrice_addPurchaseInvoiceActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="$"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/invoiceTotalPrice_addPurchaseInvoiceActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz10"
+                    android:enabled="false"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/savePurchaseInvoiceButton_addPurchaseInvoiceActivity"
+            style="@style/AppTheme.BorderlessButton.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="60dp"
+            android:text="Save"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
