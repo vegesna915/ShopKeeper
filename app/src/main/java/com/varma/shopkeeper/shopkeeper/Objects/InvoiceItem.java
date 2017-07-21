@@ -9,7 +9,11 @@ public class InvoiceItem {
     private String itemBrandName;
     private String itemSize;
     private Long itemQty;
-
+    private String itemUnitPrice;
+    private String itemPrice;
+    private String invoiceId;
+    private String itemProfit;
+    private String itemSellingPrice;
 
     public String getItemUnitPrice() {
         return itemUnitPrice;
@@ -19,9 +23,22 @@ public class InvoiceItem {
         this.itemUnitPrice = itemUnitPrice;
     }
 
-    private String itemUnitPrice;
-    private String itemPrice;
-    private String invoiceId;
+
+    public String getItemProfit() {
+        return itemProfit;
+    }
+
+    public void setItemProfit(String itemProfit) {
+        this.itemProfit = itemProfit;
+    }
+
+    public String getItemSellingPrice() {
+        return itemSellingPrice;
+    }
+
+    public void setItemSellingPrice(String itemSellingPrice) {
+        this.itemSellingPrice = itemSellingPrice;
+    }
 
     public String getItemId() {
         return itemId;

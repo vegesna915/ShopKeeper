@@ -56,10 +56,12 @@ public class FirebaseDb {
             stockItem.setItemQty(invoiceItem.getItemQty());
             stockItem.setItemSize(invoiceItem.getItemSize());
             stockItem.setItemUnitPrice(invoiceItem.getItemUnitPrice());
-            stockItem.setItemId(invoiceItem.getItemBrandName()+"_"
-                                        +invoiceItem.getItemName()+"_"
-                                        +invoiceItem.getItemSize()+"_"
-                                        +invoiceItem.getItemUnitPrice());
+            stockItem.setItemProfit(invoiceItem.getItemProfit());
+            stockItem.setItemSellingPrice(invoiceItem.getItemSellingPrice());
+            stockItem.setItemId(invoiceItem.getItemBrandName() + " "
+                    + invoiceItem.getItemName() + " "
+                    + invoiceItem.getItemSize() + " "
+                    + invoiceItem.getItemSellingPrice());
             Query query = getCurrentStockDbReference().orderByKey().equalTo(stockItem.getItemId()).limitToFirst(1);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

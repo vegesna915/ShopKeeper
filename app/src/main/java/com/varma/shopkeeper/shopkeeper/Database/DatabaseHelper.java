@@ -31,52 +31,6 @@ class DatabaseHelper extends SQLiteOpenHelper {
                 + ")";
         db.execSQL(CREATE_ITEM_DETAILS_TABLE);
 
-        String CREATE_VENDOR_DETAILS_TABLE = "CREATE TABLE " + VendorsDb.TABLE_VENDORS_DETAILS
-                + "("
-                + VendorsDb.VENDOR_ID + " TEXT PRIMARY KEY,"
-                + VendorsDb.VENDOR_NAME + " TEXT UNIQUE,"
-                + VendorsDb.VENDOR_PHONE + " TEXT,"
-                + VendorsDb.VENDOR_EMAIL + " TEXT,"
-                + VendorsDb.VENDOR_STREET + " TEXT,"
-                + VendorsDb.VENDOR_CITY + " TEXT,"
-                + VendorsDb.VENDOR_STATE + " TEXT,"
-                + VendorsDb.VENDOR_COUNTRY + " TEXT,"
-                + VendorsDb.VENDOR_ZIP + " TEXT"
-                + ")";
-        db.execSQL(CREATE_VENDOR_DETAILS_TABLE);
-
-        String CREATE_INVOICE_ITEM_DETAILS_TABLE = "CREATE TABLE " + InvoiceItemDb.TABLE_INVOICE_ITEM_DETAILS
-                + "("
-                + InvoiceItemDb.ITEM_ID + " TEXT PRIMARY KEY,"
-                + InvoiceItemDb.INVOICE_ID + " TEXT,"
-                + InvoiceItemDb.ITEM_NAME + " TEXT,"
-                + InvoiceItemDb.ITEM_BRAND_NAME + " TEXT,"
-                + InvoiceItemDb.ITEM_SIZE + " TEXT,"
-                + InvoiceItemDb.ITEM_UNIT_PRICE + " TEXT,"
-                + InvoiceItemDb.ITEM_QTY + " TEXT,"
-                + InvoiceItemDb.ITEM_PRICE + " TEXT"
-                + ")";
-        db.execSQL(CREATE_INVOICE_ITEM_DETAILS_TABLE);
-
-
-        String CREATE_PURCHASE_INVOICE_DETAILS_TABLE = "CREATE TABLE " + PurchaseInvoiceDb.TABLE_PURCHASE_INVOICE_DETAILS
-                + "("
-                + PurchaseInvoiceDb.INVOICE_ID + " TEXT PRIMARY KEY,"
-                + PurchaseInvoiceDb.INVOICE_NUMBER + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_PO_NUMBER + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_DATE + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_SUB_TOTAL + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_TAX + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_DISCOUNT + " TEXT,"
-                + PurchaseInvoiceDb.INVOICE_TOTAL_PRICE + " TEXT,"
-                + PurchaseInvoiceDb.VENDOR_NAME + " TEXT,"
-                + PurchaseInvoiceDb.VENDOR_PHONE + " TEXT,"
-                + PurchaseInvoiceDb.VENDOR_EMAIL + " TEXT,"
-                + PurchaseInvoiceDb.VENDOR_ADDRESS + " TEXT"
-                + ")";
-        db.execSQL(CREATE_PURCHASE_INVOICE_DETAILS_TABLE);
-
-
     }
 
     @Override

@@ -45,4 +45,9 @@ public class Constants {
         public static final String isAdd_or_Edit = "isAdd_or_Edit";
         public static final String editPurchaseInvoiceId = "editPurchaseInvoiceId";
     }
+
+    public static class CurrentStockByBrand {
+        public static final String brandName = "brandName";
+    }
+
 }

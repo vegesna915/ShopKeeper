@@ -1,226 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/texView_pinFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:text="Shop Keeper"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
-
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-        <ImageView
-            android:contentDescription="pin"
-            android:id="@+id/pinImage1"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/texView_pinFragment"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_pin_normal" />
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="Shop Keeper"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/pinImage2"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_pin_normal"
-            android:contentDescription="pin" />
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/pinImage3"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/pinImage1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:contentDescription="pin"
+                android:src="@drawable/ic_pin_normal" />
+
+            <ImageView
+                android:id="@+id/pinImage2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:contentDescription="pin"
+                android:src="@drawable/ic_pin_normal" />
+
+            <ImageView
+                android:id="@+id/pinImage3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:contentDescription="pin"
+                android:src="@drawable/ic_pin_normal" />
+
+            <ImageView
+                android:id="@+id/pinImage4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:contentDescription="pin"
+                android:src="@drawable/ic_pin_normal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_pin_normal"
-            android:contentDescription="pin" />
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/pinImage4"
-            android:layout_width="wrap_content"
+
+            <Button
+                android:id="@+id/number_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="1"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="2"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="3"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_pin_normal"
-            android:contentDescription="pin" />
+            android:gravity="center"
+            android:orientation="horizontal">
 
+
+            <Button
+                android:id="@+id/number_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="4"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="5"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="6"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/number_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/number_8"
+                android:layout_gravity="center"
+                android:layout_toStartOf="@+id/number_8"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="7"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="8"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/number_8"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@+id/number_8"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="9"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+
+            <Button
+                android:id="@+id/forgotButton_pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/number_0"
+                android:layout_gravity="center"
+                android:layout_toStartOf="@+id/number_0"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Forgot?"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <Button
+                android:id="@+id/number_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/number_8"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="0"
+                android:textColor="@color/colorWhite"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+            <ImageButton
+                android:id="@+id/back_pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/number_0"
+                android:layout_alignEnd="@+id/number_9"
+                android:layout_alignStart="@+id/number_9"
+                android:layout_alignTop="@id/number_0"
+                android:layout_toEndOf="@+id/number_0"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="back"
+                android:src="@drawable/ic_back_white"
+                android:theme="@style/AppTheme.BorderlessButton" />
+
+        </RelativeLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/number_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="1"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="2"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="3"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/number_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="4"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="5"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="6"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:id="@+id/number_7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/number_8"
-            android:layout_gravity="center"
-            android:layout_toStartOf="@+id/number_8"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="7"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="8"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/number_8"
-            android:layout_gravity="center"
-            android:layout_toEndOf="@+id/number_8"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="9"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-
-        <Button
-            android:id="@+id/forgotButton_pin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/number_0"
-            android:layout_gravity="center"
-            android:layout_toStartOf="@+id/number_0"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="Forgot?"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <Button
-            android:id="@+id/number_0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/number_8"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:text="0"
-            android:textColor="@color/colorWhite"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-        <ImageButton
-            android:id="@+id/back_pin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/number_0"
-            android:layout_alignEnd="@+id/number_9"
-            android:layout_alignStart="@+id/number_9"
-            android:layout_alignTop="@id/number_0"
-            android:layout_toEndOf="@+id/number_0"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="back"
-            android:src="@drawable/ic_back_white"
-            android:theme="@style/AppTheme.BorderlessButton" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

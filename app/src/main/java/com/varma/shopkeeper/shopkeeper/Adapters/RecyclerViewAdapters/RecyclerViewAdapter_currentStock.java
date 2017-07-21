@@ -1,15 +1,17 @@
 package com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.varma.shopkeeper.shopkeeper.CurrentStockActivity;
-import com.varma.shopkeeper.shopkeeper.R;
 import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_currentStock.CurrentStockViewHolder;
+import com.varma.shopkeeper.shopkeeper.CurrentStockActivity;
+import com.varma.shopkeeper.shopkeeper.CurrentStockByBrandActivity;
+import com.varma.shopkeeper.shopkeeper.Extras.Constants;
+import com.varma.shopkeeper.shopkeeper.R;
 
 import java.util.ArrayList;
 
@@ -34,12 +36,14 @@ public class RecyclerViewAdapter_currentStock extends RecyclerView.Adapter<Curre
     }
 
     @Override
-    public void onBindViewHolder(CurrentStockViewHolder holder, int position) {
+    public void onBindViewHolder(CurrentStockViewHolder holder, final int position) {
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, CurrentStockByBrandActivity.class);
+                intent.putExtra(Constants.CurrentStockByBrand.brandName, brands.get(position));
+                activity.startActivity(intent);
             }
         });
 

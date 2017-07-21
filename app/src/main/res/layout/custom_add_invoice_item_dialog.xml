@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="320dp"
+    android:layout_width="340dp"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -72,8 +72,8 @@
                 android:hint="Size"
                 android:inputType="textCapCharacters" />
 
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,8 +95,8 @@
                     android:id="@+id/xz7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignBottom="@+id/itemUnitPrice_addInvoiceItemActivity"
+                    android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/itemUnitPrice_addInvoiceItemActivity"
                     android:gravity="end|center_vertical"
                     android:text="Rs"
@@ -116,8 +116,96 @@
 
             </RelativeLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Profit" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/itemProfit_addInvoiceItemActivity"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/itemProfit_addInvoiceItemActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="Rs"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/itemProfit_addInvoiceItemActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz8"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="number"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Selling Price" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65">
+
+                <TextView
+                    android:id="@+id/xz9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/itemSellingPrice_addInvoiceItemActivity"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/itemSellingPrice_addInvoiceItemActivity"
+                    android:gravity="end|center_vertical"
+                    android:text="Rs"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/itemSellingPrice_addInvoiceItemActivity"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/xz9"
+                    android:gravity="end"
+                    android:hint="0.00"
+                    android:inputType="number"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,7 +230,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,8 +251,8 @@
                     android:id="@+id/xz6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_alignBottom="@+id/itemPrice_addInvoiceItemActivity"
+                    android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/itemPrice_addInvoiceItemActivity"
                     android:gravity="end|center_vertical"
                     android:text="Rs"
@@ -181,15 +268,11 @@
                     android:enabled="false"
                     android:gravity="end"
                     android:hint="0.00"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:textSize="16sp" />
 
             </RelativeLayout>
-
-
         </LinearLayout>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"

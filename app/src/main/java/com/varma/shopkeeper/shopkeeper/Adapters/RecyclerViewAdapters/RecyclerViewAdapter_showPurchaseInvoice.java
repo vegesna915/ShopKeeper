@@ -1,14 +1,16 @@
 package com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters;
 
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.
-        RecyclerViewAdapter_showPurchaseInvoice.ShowPurchaseInvoiceViewHolder;
+import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_showPurchaseInvoice.ShowPurchaseInvoiceViewHolder;
+import com.varma.shopkeeper.shopkeeper.AddPurchaseInvoiceActivity;
+import com.varma.shopkeeper.shopkeeper.Extras.Constants;
 import com.varma.shopkeeper.shopkeeper.Objects.PurchaseInvoice;
 import com.varma.shopkeeper.shopkeeper.R;
 import com.varma.shopkeeper.shopkeeper.ShowPurchaseInvoiceActivity;
@@ -36,11 +38,23 @@ public class RecyclerViewAdapter_showPurchaseInvoice extends RecyclerView.Adapte
     @Override
     public void onBindViewHolder(ShowPurchaseInvoiceViewHolder holder, int position) {
 
-        PurchaseInvoice invoice = invoices.get(position);
+        final PurchaseInvoice invoice = invoices.get(position);
 
         holder.vendorNameEdit.setText(invoice.getVendorName());
         holder.invoiceNumberEdit.setText(invoice.getInvoiceNumber());
         holder.invoiceTotalPriceEdit.setText(invoice.getInvoiceTotalPrice());
+
+        holder.v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(activity, AddPurchaseInvoiceActivity.class);
+                intent.putExtra(Constants.AddPurchaseInvoiceActivity.isAdd_or_Edit, false);
+                intent.putExtra(Constants.AddPurchaseInvoiceActivity.editPurchaseInvoiceId, invoice.getInvoiceId());
+                activity.startActivity(intent);
+
+            }
+        });
 
     }
 

@@ -1,8 +1,9 @@
 package com.varma.shopkeeper.shopkeeper;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,16 +21,13 @@ import com.varma.shopkeeper.shopkeeper.Objects.Vendor;
 public class AddVendorActivity extends AppCompatActivity {
 
 
-    private EditText vendorNameEdit, vendorPhoneEdit, vendorEmailEdit, vendorStreetEdit,
-            vendorCityEdit, vendorStateEdit, vendorCountryEdit, vendorZipEdit;
-
-    private String vendorName, vendorPhone, vendorEmail, vendorStreet, vendorCity, vendorState,
-            vendorCountry, vendorZip;
-
     boolean isAddOrEdit;
     String editVendorId;
-
     Vendor vendor;
+    private EditText vendorNameEdit, vendorPhoneEdit, vendorEmailEdit, vendorStreetEdit,
+            vendorCityEdit, vendorStateEdit, vendorCountryEdit, vendorZipEdit;
+    private String vendorName, vendorPhone, vendorEmail, vendorStreet, vendorCity, vendorState,
+            vendorCountry, vendorZip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +47,6 @@ public class AddVendorActivity extends AppCompatActivity {
         declarations();
 
         if (!isAddOrEdit) {
-            //VendorsDb vendorsDb = new VendorsDb(this);
-           // vendor = vendorsDb.getVendorById(editVendorId);
 
             DatabaseReference reference = FirebaseDb.getVendorsDbReference().child(editVendorId);
             ValueEventListener valueEventListener = new ValueEventListener() {
@@ -191,6 +187,21 @@ public class AddVendorActivity extends AppCompatActivity {
             Toast.makeText(this, "Vendor updated", Toast.LENGTH_SHORT).show();
         }
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home: {
+                onBackPressed();
+                break;
+            }
+
+        }
+
+        return true;
     }
 
 }

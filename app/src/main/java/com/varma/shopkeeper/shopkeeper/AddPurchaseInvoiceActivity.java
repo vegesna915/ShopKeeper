@@ -1,14 +1,17 @@
 package com.varma.shopkeeper.shopkeeper;
 
 import android.app.Dialog;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,9 +23,11 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_AddPurchaseInvoice;
-import com.varma.shopkeeper.shopkeeper.Database.InvoiceItemDb;
+import com.varma.shopkeeper.shopkeeper.Extras.Constants;
+import com.varma.shopkeeper.shopkeeper.Extras.TextWatcherAddPurchaseInvoiceItem;
 import com.varma.shopkeeper.shopkeeper.Extras.Utilis;
 import com.varma.shopkeeper.shopkeeper.FirebaseDb.FirebaseDb;
 import com.varma.shopkeeper.shopkeeper.Objects.InvoiceItem;
@@ -47,14 +52,24 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
     private AutoCompleteTextView vendorNameEdit;
     private Button invoiceDateEdit;
     private String  invoiceDate;
-
     private long invoiceId;
+
+    private boolean isAddOrEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_purchase_invoice);
 
-        invoiceId = System.currentTimeMillis();
+        isAddOrEdit = getIntent().getBooleanExtra(Constants.AddPurchaseInvoiceActivity.isAdd_or_Edit, true);
+
+        if (isAddOrEdit) {
+            invoiceId = System.currentTimeMillis();
+        } else {
+            invoiceId = Long.parseLong(getIntent().
+                    getStringExtra(Constants.AddPurchaseInvoiceActivity.editPurchaseInvoiceId));
+        }
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarAddPurchaseInvoiceActivity);
         setSupportActionBar(toolbar);
@@ -165,143 +180,34 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
         invoiceDiscountEdit.addTextChangedListener(textWatcher);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_addPurchaseInvoiceActivity);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                createAddInvoiceItemDialog();
-            }
-        });
+        if (isAddOrEdit) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    createAddInvoiceItemDialog();
+                }
+            });
+        } else {
+            fab.setVisibility(View.GONE);
+        }
 
     }
 
     private void createAddInvoiceItemDialog(){
-        final Dialog dialog = new Dialog(AddPurchaseInvoiceActivity.this);
-        dialog.setContentView(R.layout.custom_add_invoice_item_dialog);
-        dialog.setTitle("Add Item");
 
-        final InvoiceItem invoiceItem = new InvoiceItem();
+        TextWatcherAddPurchaseInvoiceItem textWatcher = new TextWatcherAddPurchaseInvoiceItem(this, invoiceId);
 
-        final AutoCompleteTextView invoiceItemName,invoiceItemBrandName,invoiceItemSize;
-        final EditText invoiceItemUnitPriceEdit,invoiceItemQtyEdit,invoiceItemPriceEdit;
-
-        invoiceItemName = (AutoCompleteTextView) dialog.findViewById(R.id.itemName_addInvoiceItemActivity);
-        invoiceItemBrandName = (AutoCompleteTextView) dialog.findViewById(R.id.itemBrand_addInvoiceItemActivity);
-        invoiceItemSize = (AutoCompleteTextView) dialog.findViewById(R.id.itemSize_addInvoiceItemActivity);
-        invoiceItemUnitPriceEdit = (EditText) dialog.findViewById(R.id.itemUnitPrice_addInvoiceItemActivity);
-        invoiceItemQtyEdit = (EditText) dialog.findViewById(R.id.itemQty_addInvoiceItemActivity);
-        invoiceItemPriceEdit = (EditText) dialog.findViewById(R.id.itemPrice_addInvoiceItemActivity);
-
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                float invoiceItemUnitPrice,invoiceItemQty,invoiceItemPrice;
-
-                if(invoiceItemUnitPriceEdit.getText().toString().equals("")){
-                    invoiceItemUnitPrice = 0;
-                }else{
-                    invoiceItemUnitPrice = Integer.parseInt(invoiceItemUnitPriceEdit.getText().toString());
-                }
-
-
-                if(invoiceItemQtyEdit.getText().toString().equals("")){
-                    invoiceItemQty = 1;
-                }else{
-                    invoiceItemQty = Float.parseFloat(invoiceItemQtyEdit.getText().toString());
-                }
-
-                invoiceItemPrice = invoiceItemUnitPrice*invoiceItemQty;
-                invoiceItemPriceEdit.setText(invoiceItemPrice+"");
-            }
-        };
-
-        invoiceItemUnitPriceEdit.addTextChangedListener(textWatcher);
-        invoiceItemQtyEdit.addTextChangedListener(textWatcher);
-
-        Button cancelButton = (Button) dialog.findViewById(R.id.cancelItemButton_addInvoiceItemActivity);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        Button addButton = (Button) dialog.findViewById(R.id.addItemButton_addInvoiceItemActivity);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                float invoiceItemUnitPrice,invoiceItemPrice;
-                Long invoiceItemQty;
-                if (invoiceItemName.getText().toString().equals("")){
-                    invoiceItemName.setError("Enter Item Name");
-                    return;
-                }
-                if(invoiceItemBrandName.getText().toString().equals("")){
-                    invoiceItemBrandName.setError("Enter Brand Name");
-                    return;
-                }
-
-                if(invoiceItemSize.getText().toString().equals("")){
-                    invoiceItemSize.setError("Enter Item Size");
-                    return;
-                }
-
-                if(invoiceItemUnitPriceEdit.getText().toString().equals("")){
-                    invoiceItemUnitPriceEdit.setError("Enter Unit Price");
-                    return;
-                }
-                invoiceItemUnitPrice = Integer.parseInt(invoiceItemUnitPriceEdit.getText().toString());
-
-                if(invoiceItemUnitPrice==0){
-                    invoiceItemUnitPriceEdit.setError("Unit Price can't be 0");
-                    return;
-                }
-
-                if(invoiceItemQtyEdit.getText().toString().equals("")){
-                    invoiceItemQty = (long)1;
-                }else{
-                    invoiceItemQty = Long.parseLong(invoiceItemQtyEdit.getText().toString());
-                }
-
-                invoiceItemPrice = invoiceItemUnitPrice*invoiceItemQty;
-                invoiceItemPriceEdit.setText(invoiceItemPrice+"");
-
-                invoiceItem.setInvoiceId(invoiceId+"");
-                invoiceItem.setItemName(invoiceItemName.getText().toString());
-                invoiceItem.setItemBrandName(invoiceItemBrandName.getText().toString());
-                invoiceItem.setItemSize(invoiceItemSize.getText().toString());
-                invoiceItem.setItemUnitPrice(((int)invoiceItemUnitPrice)+"");
-                invoiceItem.setItemQty(invoiceItemQty);
-                invoiceItem.setItemPrice(invoiceItemPrice+"");
-
-
-                invoiceItem.setItemId(System.currentTimeMillis()+"");
-                invoiceItems.add(invoiceItem);
-
-                InvoiceItemDb invoiceItemDb = new InvoiceItemDb(AddPurchaseInvoiceActivity.this);
-                invoiceItemDb.addInvoiceItem(invoiceItem);
-
-                refreshInvoiceItems();
-                refreshInputs();
-
-                dialog.dismiss();
-
-            }
-        });
+        Dialog dialog = textWatcher.getAddItemDialog();
 
         dialog.show();
+    }
+
+    public void addInvoiceItem(InvoiceItem invoiceItem) {
+
+        invoiceItems.add(invoiceItem);
+
+        adapterRecyclerView.notifyDataSetChanged();
+        refreshInputs();
 
     }
 
@@ -378,17 +284,15 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
 
     private void saveButtonClicked() {
 
-        String vendorName, vendorPhone, vendorEmail, vendorAddress, invoiceNumber,
-                invoicePONUmber;
 
         refreshInputs();
 
-        vendorName = vendorNameEdit.getText().toString();
-        vendorPhone = vendorPhoneEdit.getText().toString();
-        vendorEmail = vendorEmailEdit.getText().toString();
-        vendorAddress = vendorAddressEdit.getText().toString();
-        invoiceNumber = invoiceNumberEdit.getText().toString();
-        invoicePONUmber = invoicePONUmberEdit.getText().toString();
+        final String vendorName = vendorNameEdit.getText().toString();
+        final String vendorPhone = vendorPhoneEdit.getText().toString();
+        final String vendorEmail = vendorEmailEdit.getText().toString();
+        final String vendorAddress = vendorAddressEdit.getText().toString();
+        final String invoiceNumber = invoiceNumberEdit.getText().toString();
+        final String invoicePONUmber = invoicePONUmberEdit.getText().toString();
         invoiceDate = invoiceDateEdit.getText().toString();
 
         if(vendorName.equals("")){
@@ -426,36 +330,57 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
             invoiceTotalPriceEdit.requestFocus();
             return;
         }
-
-        PurchaseInvoice invoice = new PurchaseInvoice();
-
-        invoice.setInvoiceId(invoiceId+"");
-        invoice.setInvoiceNumber(invoiceNumber);
-        invoice.setInvoicePONumber(invoicePONUmber);
-        invoice.setInvoiceDate(invoiceDate);
-        invoice.setVendorName(vendorName);
-        invoice.setVendorPhone(vendorPhone);
-        invoice.setVendorEmail(vendorEmail);
-        invoice.setVendorAddress(vendorAddress);
-        invoice.setInvoiceSubTotal(invoiceSubTotal+"");
-        invoice.setInvoiceTax(invoiceTax+"");
-        invoice.setInvoiceDiscount(invoiceDiscount+"");
-        invoice.setInvoiceTotalPrice(invoiceTotalPrice+"");
-
-        invoice.setInvoiceItems(invoiceItems);
-        FirebaseDb.savePurchaseInvoice(invoice);
+        String message, title;
+        if (isAddOrEdit) {
+            title = "Save";
+            message = "Check again, Once saved invoice items cannot be changed";
+        } else {
+            title = "Update";
+            message = "Check again, Once update old data will be replaced";
+        }
 
 
-        Toast.makeText(this, "save Clicked", Toast.LENGTH_SHORT).show();
-        finish();
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        PurchaseInvoice invoice = new PurchaseInvoice();
+
+                        invoice.setInvoiceId(invoiceId + "");
+                        invoice.setInvoiceNumber(invoiceNumber);
+                        invoice.setInvoicePONumber(invoicePONUmber);
+                        invoice.setInvoiceDate(invoiceDate);
+                        invoice.setVendorName(vendorName);
+                        invoice.setVendorPhone(vendorPhone);
+                        invoice.setVendorEmail(vendorEmail);
+                        invoice.setVendorAddress(vendorAddress);
+                        invoice.setInvoiceSubTotal(invoiceSubTotal + "");
+                        invoice.setInvoiceTax(invoiceTax + "");
+                        invoice.setInvoiceDiscount(invoiceDiscount + "");
+                        invoice.setInvoiceTotalPrice(invoiceTotalPrice + "");
+
+                        invoice.setInvoiceItems(invoiceItems);
+                        FirebaseDb.savePurchaseInvoice(invoice);
+
+                        Toast.makeText(AddPurchaseInvoiceActivity.this,
+                                "Purchase invoice saved", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }).create();
+
+        alertDialog.show();
+
     }
 
 
-    private void refreshInvoiceItems() {
-
-        adapterRecyclerView.notifyDataSetChanged();
-
-    }
 
     private void refreshVendors() {
 
@@ -490,11 +415,63 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
     @Override
     public void onResume() {
         super.onResume();
-        refreshInvoiceItems();
         refreshInputs();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()) {
 
+            case android.R.id.home: {
+                onBackPressed();
+                break;
+            }
 
+        }
+
+        return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (!isAddOrEdit) {
+            Query query = FirebaseDb.getPurchaseInvoicesDbReference().child(invoiceId + "");
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+
+                        PurchaseInvoice invoice = dataSnapshot.getValue(PurchaseInvoice.class);
+
+                        vendorNameEdit.setText(invoice.getVendorName());
+                        vendorPhoneEdit.setText(invoice.getVendorPhone());
+                        vendorEmailEdit.setText(invoice.getVendorEmail());
+                        vendorAddressEdit.setText(invoice.getVendorAddress());
+                        invoiceNumberEdit.setText(invoice.getInvoiceNumber());
+                        invoicePONUmberEdit.setText(invoice.getInvoicePONumber());
+                        invoiceDateEdit.setText(invoice.getInvoiceDate());
+                        invoiceSubTotalEdit.setText(invoice.getInvoiceSubTotal());
+                        invoiceTaxEdit.setText(invoice.getInvoiceTax());
+                        invoiceTaxEdit.setEnabled(false);
+                        invoiceDiscountEdit.setText(invoice.getInvoiceDiscount());
+                        invoiceDiscountEdit.setEnabled(false);
+                        invoiceTotalPriceEdit.setText(invoice.getInvoiceTotalPrice());
+                        invoiceItems.clear();
+                        invoiceItems.addAll(invoice.getInvoiceItems());
+                        adapterRecyclerView.notifyDataSetChanged();
+                        refreshInputs();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
 }

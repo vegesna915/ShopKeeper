@@ -13,27 +13,33 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_currentStock;
+import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_currentStockByBrand;
+import com.varma.shopkeeper.shopkeeper.Extras.Constants;
 import com.varma.shopkeeper.shopkeeper.FirebaseDb.FirebaseDb;
+import com.varma.shopkeeper.shopkeeper.Objects.StockItem;
 
 import java.util.ArrayList;
 
-public class CurrentStockActivity extends AppCompatActivity {
+public class CurrentStockByBrandActivity extends AppCompatActivity {
 
-    RecyclerViewAdapter_currentStock adapter;
-    ArrayList<String> brands = new ArrayList<>();
+    RecyclerViewAdapter_currentStockByBrand adapter;
+    ArrayList<StockItem> stockItems = new ArrayList<>();
     ProgressBar progressBar;
+    String brandName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_stock);
+        setContentView(R.layout.activity_current_stock_by_brand);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarCurrentStock);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarCurrentStockByBrand);
         setSupportActionBar(toolbar);
 
-        if(getSupportActionBar()!=null){
+        brandName = getIntent().getStringExtra(Constants.CurrentStockByBrand.brandName);
+
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(brandName);
         }
 
         declarations();
@@ -43,15 +49,16 @@ public class CurrentStockActivity extends AppCompatActivity {
     }
 
     private void declarations() {
-        progressBar = (ProgressBar) findViewById(R.id.progressBar_currentStock);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar_currentStockByBrand);
         progressBar.setVisibility(View.VISIBLE);
     }
+
     private void setRecyclerView() {
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView_currentStock);
-        adapter = new RecyclerViewAdapter_currentStock(this,brands);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView_currentStockByBrand);
+        adapter = new RecyclerViewAdapter_currentStockByBrand(this, stockItems);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
     }
@@ -60,22 +67,21 @@ public class CurrentStockActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Query query = FirebaseDb.getCurrentStockDbReference().orderByChild("itemBrandName");
+        Query query = FirebaseDb.getCurrentStockDbReference()
+                .orderByChild("itemBrandName")
+                .equalTo(brandName)
+                .limitToFirst(50);
         query.keepSynced(true);
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                stockItems.clear();
 
-                brands.clear();
-                String temp = "";
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
 
-                for(DataSnapshot snap:dataSnapshot.getChildren()){
-                    String brand = snap.child("itemBrandName").getValue(String.class);
-                    if(!temp.equals(brand)){
-                        brands.add(brand);
-                        temp = brand;
-                    }
+                    StockItem stockItem = snap.getValue(StockItem.class);
+                    stockItems.add(stockItem);
                 }
 
                 adapter.notifyDataSetChanged();

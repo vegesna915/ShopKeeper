@@ -3,9 +3,10 @@ package com.varma.shopkeeper.shopkeeper;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.varma.shopkeeper.shopkeeper.Extras.Constants;
@@ -87,4 +88,20 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home: {
+                onBackPressed();
+                break;
+            }
+
+        }
+
+        return true;
+    }
+
 }

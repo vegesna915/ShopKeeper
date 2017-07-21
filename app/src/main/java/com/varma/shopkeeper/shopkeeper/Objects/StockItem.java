@@ -4,7 +4,26 @@ package com.varma.shopkeeper.shopkeeper.Objects;
 public class StockItem {
 
     private String itemId,itemName,itemBrandName,itemSize,itemUnitPrice;
+    private String itemProfit;
+    private String itemSellingPrice;
     private Long itemQty;
+
+
+    public String getItemProfit() {
+        return itemProfit;
+    }
+
+    public void setItemProfit(String itemProfit) {
+        this.itemProfit = itemProfit;
+    }
+
+    public String getItemSellingPrice() {
+        return itemSellingPrice;
+    }
+
+    public void setItemSellingPrice(String itemSellingPrice) {
+        this.itemSellingPrice = itemSellingPrice;
+    }
 
     public String getItemId() {
         return itemId;
