@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/saleTotalPrice_SaleActivity"
+            android:layout_toStartOf="@+id/saleTotalPrice_SaleActivity"
             android:text="06:00 pm" />
 
         <TextView
@@ -26,9 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/saleTime_SaleActivity"
+            android:layout_below="@+id/saleTime_SaleActivity"
             android:layout_marginTop="4dp"
-            android:layout_toStartOf="@id/saleTotalPrice_SaleActivity"
             android:text="21/06/2017"
             android:textColor="@color/colorSecondaryText" />
 
