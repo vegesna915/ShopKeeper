@@ -3,8 +3,8 @@ package com.varma.shopkeeper.shopkeeper;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,7 +67,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.salesButton_homeActivity:{
-
+                intent = new Intent(HomeActivity.this, SaleActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.returnItemButton_homeActivity:{

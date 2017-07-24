@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.varma.shopkeeper.shopkeeper.AddPurchaseInvoiceActivity;
 import com.varma.shopkeeper.shopkeeper.Objects.InvoiceItem;
 import com.varma.shopkeeper.shopkeeper.R;
 
-public class TextWatcherAddPurchaseInvoiceItem {
+public class DialogAddPurchaseInvoiceItem {
 
     private AddPurchaseInvoiceActivity activity;
     private long invoiceId;
@@ -27,7 +26,7 @@ public class TextWatcherAddPurchaseInvoiceItem {
     private int invoiceItemUnitPrice, invoiceItemQty, invoiceItemPrice,
             invoiceItemProfit, invoiceItemSellingProfit;
 
-    public TextWatcherAddPurchaseInvoiceItem(AddPurchaseInvoiceActivity activity, long invoiceId) {
+    public DialogAddPurchaseInvoiceItem(AddPurchaseInvoiceActivity activity, long invoiceId) {
         this.activity = activity;
         this.invoiceId = invoiceId;
     }
@@ -208,7 +207,6 @@ public class TextWatcherAddPurchaseInvoiceItem {
                 invoiceItemPrice = invoiceItemUnitPrice * invoiceItemQty;
 
                 invoiceItemPriceEdit.setText(invoiceItemPrice + "");
-                Toast.makeText(activity, invoiceItemUnitPrice + " - " + invoiceItemPrice, Toast.LENGTH_SHORT).show();
                 if (invoiceItemProfit != 0) {
                     invoiceItemSellingProfit = invoiceItemUnitPrice + invoiceItemProfit;
                     invoiceItemSellingPriceEdit.setText(invoiceItemSellingProfit + "");

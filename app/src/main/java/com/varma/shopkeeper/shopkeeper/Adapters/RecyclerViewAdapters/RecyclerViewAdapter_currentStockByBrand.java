@@ -41,7 +41,7 @@ public class RecyclerViewAdapter_currentStockByBrand extends RecyclerView.Adapte
 
         holder.stockItemNameView.setText(stockItem.getItemName());
         holder.stockItemSizeView.setText("Size " + stockItem.getItemSize());
-        holder.stockItemUnitPriceView.setText("Rs " + stockItem.getItemUnitPrice());
+        holder.stockItemUnitPriceView.setText("Rs " + stockItem.getItemSellingPrice());
         holder.stockItemQtyView.setText("Qty " + stockItem.getItemQty());
 
     }

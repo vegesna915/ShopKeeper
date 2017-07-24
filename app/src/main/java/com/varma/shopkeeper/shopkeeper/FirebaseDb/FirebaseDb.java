@@ -10,6 +10,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.varma.shopkeeper.shopkeeper.Objects.InvoiceItem;
 import com.varma.shopkeeper.shopkeeper.Objects.PurchaseInvoice;
+import com.varma.shopkeeper.shopkeeper.Objects.Sale;
 import com.varma.shopkeeper.shopkeeper.Objects.StockItem;
 import com.varma.shopkeeper.shopkeeper.Objects.Vendor;
 
@@ -38,6 +39,10 @@ public class FirebaseDb {
         return getFirebaseDatabase().getReference("Current Stock");
     }
 
+    public static DatabaseReference getSalesDbReference() {
+        return getFirebaseDatabase().getReference("Sales");
+    }
+
 
 
     public static void saveVendor(Vendor vendor){
@@ -58,9 +63,9 @@ public class FirebaseDb {
             stockItem.setItemUnitPrice(invoiceItem.getItemUnitPrice());
             stockItem.setItemProfit(invoiceItem.getItemProfit());
             stockItem.setItemSellingPrice(invoiceItem.getItemSellingPrice());
-            stockItem.setItemId(invoiceItem.getItemBrandName() + " "
-                    + invoiceItem.getItemName() + " "
-                    + invoiceItem.getItemSize() + " "
+            stockItem.setItemId(invoiceItem.getItemBrandName() + "_"
+                    + invoiceItem.getItemName() + "_"
+                    + invoiceItem.getItemSize() + "_"
                     + invoiceItem.getItemSellingPrice());
             Query query = getCurrentStockDbReference().orderByKey().equalTo(stockItem.getItemId()).limitToFirst(1);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,4 +93,9 @@ public class FirebaseDb {
     }
 
 
+    public static void saveSale(Sale sale) {
+
+        getSalesDbReference().child(sale.getSaleId()).setValue(sale);
+
+    }
 }

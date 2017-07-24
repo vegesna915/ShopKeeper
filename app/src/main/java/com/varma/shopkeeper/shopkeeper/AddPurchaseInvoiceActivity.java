@@ -27,7 +27,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.varma.shopkeeper.shopkeeper.Adapters.RecyclerViewAdapters.RecyclerViewAdapter_AddPurchaseInvoice;
 import com.varma.shopkeeper.shopkeeper.Extras.Constants;
-import com.varma.shopkeeper.shopkeeper.Extras.TextWatcherAddPurchaseInvoiceItem;
+import com.varma.shopkeeper.shopkeeper.Extras.DialogAddPurchaseInvoiceItem;
 import com.varma.shopkeeper.shopkeeper.Extras.Utilis;
 import com.varma.shopkeeper.shopkeeper.FirebaseDb.FirebaseDb;
 import com.varma.shopkeeper.shopkeeper.Objects.InvoiceItem;
@@ -46,13 +46,13 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
     ArrayList<String> vendorNames = new ArrayList<>();
     ArrayList<InvoiceItem> invoiceItems = new ArrayList<>();
     float invoiceSubTotal = 0;
-    float invoiceTax, invoiceTotalPrice,invoiceDiscount;
+    float invoiceTax, invoiceDiscount;
     private EditText vendorPhoneEdit, vendorEmailEdit, vendorAddressEdit, invoiceNumberEdit,
             invoicePONUmberEdit, invoiceSubTotalEdit, invoiceTaxEdit, invoiceDiscountEdit,invoiceTotalPriceEdit;
     private AutoCompleteTextView vendorNameEdit;
     private Button invoiceDateEdit;
     private String  invoiceDate;
-    private long invoiceId;
+    private long invoiceId, invoiceTotalPrice;
 
     private boolean isAddOrEdit;
     @Override
@@ -195,9 +195,9 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
 
     private void createAddInvoiceItemDialog(){
 
-        TextWatcherAddPurchaseInvoiceItem textWatcher = new TextWatcherAddPurchaseInvoiceItem(this, invoiceId);
+        DialogAddPurchaseInvoiceItem dialogAddPurchaseInvoiceItem = new DialogAddPurchaseInvoiceItem(this, invoiceId);
 
-        Dialog dialog = textWatcher.getAddItemDialog();
+        Dialog dialog = dialogAddPurchaseInvoiceItem.getAddItemDialog();
 
         dialog.show();
     }
@@ -273,11 +273,12 @@ public class AddPurchaseInvoiceActivity extends AppCompatActivity implements Dat
             invoiceSubTotal += Float.parseFloat(i.getItemPrice());
         }
 
-        invoiceTotalPrice = invoiceSubTotal + (invoiceSubTotal * invoiceTax/100) - (invoiceSubTotal * invoiceDiscount/100);
+        invoiceTotalPrice = (long) (invoiceSubTotal
+                + (invoiceSubTotal * invoiceTax / 100) - (invoiceSubTotal * invoiceDiscount / 100));
 
         invoiceSubTotalEdit.setText(invoiceSubTotal + "");
         invoiceTotalPriceEdit.setText(invoiceTotalPrice + "");
-
+        invoiceSubTotalEdit.setError(null);
         invoiceTotalPriceEdit.setError(null);
 
     }

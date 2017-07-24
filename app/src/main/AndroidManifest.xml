@@ -58,8 +58,18 @@
             android:label="Add Purchase Invoice"
             android:parentActivityName=".ManageVendorsActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity android:name=".CurrentStockByBrandActivity" />
-        <activity android:name=".SaleActivity"></activity>
+        <activity
+            android:name=".CurrentStockByBrandActivity"
+            android:parentActivityName=".CurrentStockActivity" />
+        <activity
+            android:name=".SaleActivity"
+            android:label="Sale"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".AddSaleActivity"
+            android:label="Add Sale"
+            android:parentActivityName=".SaleActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
     </application>
 
 </manifest>

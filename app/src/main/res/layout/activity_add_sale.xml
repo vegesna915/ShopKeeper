@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.varma.shopkeeper.shopkeeper.ShowPurchaseInvoiceActivity">
+    tools:context="com.varma.shopkeeper.shopkeeper.AddSaleActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,36 +12,24 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarShowPurchaseInvoiceActivity"
+            android:id="@+id/toolbarAddSaleActivity"
             style="@style/AppTheme.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="4dp"
             tools:ignore="UnusedAttribute" />
-        <ProgressBar
-            android:id="@+id/progressBar_showPurchaseInvoice"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:indeterminate="true"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView_ShowPurchaseInvoiceActivity"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <include layout="@layout/scroll_view_add_sale_activity" />
 
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_ShowPurchaseInvoiceActivity"
+        android:id="@+id/fab_addSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_add_white"
         app:fabSize="normal"
         app:useCompatPadding="true" />
-
-
 
 </FrameLayout>
